@@ -20,12 +20,15 @@ class ProductOverview extends StatefulWidget {
   final String productImage;
   final int productPrice;
   final String productId;
+  var productUnit;
   // final int productQuantity;
   ProductOverview(
       {required this.productId,
       required this.productName,
       required this.productImage,
-      required this.productPrice});
+      required this.productPrice,
+      required this.productUnit,
+      });
 
   @override
   _ProductOverviewState createState() => _ProductOverviewState();
@@ -121,6 +124,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                     wishListName: widget.productName,
                     wishListImage: widget.productImage,
                     wishListPrice: widget.productPrice,
+                    wishListUnit: widget.productUnit[0],
                     wishListQuantity: 2,
                   );
                 }
@@ -223,6 +227,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                           productImage: widget.productImage,
                           productName: widget.productName,
                           productPrice: widget.productPrice,
+                          productUnit: widget.productUnit,
                           //  productQuantity: "1",
                         ),
 

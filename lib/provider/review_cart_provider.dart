@@ -12,6 +12,7 @@ class ReviewCartProvider with ChangeNotifier {
     required String cartImage,
     required int cartPrice,
     required int cartQuantity,
+    var cartUnit,
     //required bool isAdd,
   }) async {
     FirebaseFirestore.instance
@@ -26,6 +27,7 @@ class ReviewCartProvider with ChangeNotifier {
           "cartImage": cartImage,
           "cartPrice": cartPrice,
           "cartQuantity": cartQuantity,
+          "cartUnit":cartUnit,
           "isAdd":true,
         }
     );
@@ -75,6 +77,7 @@ class ReviewCartProvider with ChangeNotifier {
         cartName: element.get("cartName"),
         cartPrice: element.get("cartPrice"),
         cartQuantity: element.get("cartQuantity"),
+        cartUnit: element.get("cartUnit"),
       );
       newList.add(reviewCartModel);
     });
@@ -84,6 +87,31 @@ class ReviewCartProvider with ChangeNotifier {
   List<ReviewCartModel> get getReviewCartDataList{
     return reviewCartDataList;
    }
+
+  //////////////////////Total Price/////////////////
+
+  getTotalPrice(){
+    double total = 0.0;
+    reviewCartDataList.forEach((element) {
+      if(element.cartUnit == "1 Kg")
+        {
+          total += (4 * element.cartPrice) * element.cartQuantity;
+        }
+      else if(element.cartUnit == "750 Gram")
+      {
+        total += (3 * element.cartPrice) * element.cartQuantity;
+      }
+      else if(element.cartUnit == "500 Gram")
+      {
+        total += (2 * element.cartPrice) * element.cartQuantity;
+      }
+      else
+      {
+        total += element.cartPrice * element.cartQuantity;
+      }
+    });
+    return total;
+  }
 
 
   ////////////// ReviewCartDeleteFunction //////////////

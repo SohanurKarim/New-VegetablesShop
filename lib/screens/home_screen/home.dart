@@ -202,6 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       productImage: vegetablesProductData.productImage,
                       productName: vegetablesProductData.productName,
                       productId: vegetablesProductData.productId,
+                      productUnit: vegetablesProductData,
                       onTap: (){
                         Navigator.of(context).push(
                             MaterialPageRoute(
@@ -210,6 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 productPrice: vegetablesProductData.productPrice,
                                 productName: vegetablesProductData.productName,
                                 productImage: vegetablesProductData.productImage,
+                                productUnit: vegetablesProductData.productUnit,
                               ),
                             )
                         );
@@ -279,6 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productImage: fruitsProductData.productImage,
                   productName: fruitsProductData.productName,
                   productId: fruitsProductData.productId,
+                  productUnit: fruitsProductData,
                   onTap: (){
                     Navigator.of(context).push(
                         MaterialPageRoute(
@@ -287,6 +290,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             productPrice: fruitsProductData.productPrice,
                             productName: fruitsProductData.productName,
                             productImage: fruitsProductData.productImage,
+                            productUnit: fruitsProductData.productUnit,
                           ),
                         )
                     );
@@ -357,6 +361,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productImage: herbsProductData.productImage,
                   productName: herbsProductData.productName,
                   productId: herbsProductData.productId,
+                  productUnit: herbsProductData,
                   onTap: (){
                     Navigator.of(context).push(
                         MaterialPageRoute(
@@ -365,6 +370,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             productPrice: herbsProductData.productPrice,
                             productName: herbsProductData.productName,
                             productImage: herbsProductData.productImage,
+                            productUnit: herbsProductData.productUnit,
                           ),
                         )
                     );
@@ -665,7 +671,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           Text(
-                            '30% Off',
+                            '50% Off',
                             style: TextStyle(
                               fontSize: 40,
                               color: Colors.green[100],

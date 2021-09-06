@@ -153,8 +153,8 @@ class _MyprofileState extends State<Myprofile> {
                   backgroundColor: primaryColor,
                   child: CircleAvatar(
                     backgroundImage: NetworkImage(
-                         userData.userImage ??
-                        'https://cdn.dribbble.com/users/1141243/screenshots/5837877/panda.png?compress=1&resize=400x300'),
+                         userData.userImage ),
+                            // ??'https://cdn.dribbble.com/users/1141243/screenshots/5837877/panda.png?compress=1&resize=400x300'),
                     radius: 45,
                     backgroundColor: scaffoldBackgroundColor,
                   ),

@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:foodtest0/config/color.dart';
+import 'package:foodtest0/provider/review_cart_provider.dart';
 import 'package:foodtest0/widget/count.dart';
+import 'package:provider/provider.dart';
 
-class SingleItem extends StatelessWidget {
+class SingleItem extends StatefulWidget {
   // const SingleItem({Key? key}) : super(key: key);
 
   bool isBool = false;
@@ -14,6 +17,7 @@ class SingleItem extends StatelessWidget {
   int productPrice;
   int productQuantity;
   VoidCallback? onDelete;
+  var productUnit;
 
   SingleItem({
     required this.isBool,
@@ -24,10 +28,38 @@ class SingleItem extends StatelessWidget {
     required this.productQuantity,
     required this.productId,
     this.onDelete,
+    required this.productUnit,
   });
 
   @override
+  _SingleItemState createState() => _SingleItemState();
+}
+
+class _SingleItemState extends State<SingleItem> {
+
+  late ReviewCartProvider reviewCartProvider;
+
+  late int count;
+  getCount(){
+   setState(() {
+     count = widget.productQuantity;
+   });
+  }
+
+  @override
+  void initState() {
+    getCount();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+
+    getCount();
+    reviewCartProvider = Provider.of<ReviewCartProvider>(context);
+    reviewCartProvider.getReviewCartData();
+
     return  Column(
       children: [
         Padding(
@@ -39,7 +71,7 @@ class SingleItem extends StatelessWidget {
                   height: 90,
                   child: Center(
                     child: Image.network(
-                        productImage,
+                        widget.productImage,
                     ),
                   ),
                 ),
@@ -48,7 +80,7 @@ class SingleItem extends StatelessWidget {
                 child: Container(
                   height: 90,
                   child: Column(
-                    mainAxisAlignment: isBool == false
+                    mainAxisAlignment: widget.isBool == false
                         ? MainAxisAlignment.spaceAround
                         : MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,21 +89,21 @@ class SingleItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            productName,
+                            widget.productName,
                             style: TextStyle(
                                 color: textColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
                           ),
                           Text(
-                            "$productPrice\$",
+                            "${widget.productPrice}\$",
                            // "50\$/ 50 Gram",
                             style: TextStyle(
                                 color: textColor, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
-                      isBool == false
+                      widget.isBool == false
                           ? GestureDetector(
                         onTap: (){
                           showModalBottomSheet(
@@ -82,7 +114,7 @@ class SingleItem extends StatelessWidget {
                                   children: <Widget>[
                                     ListTile(
                                       // leading: new Icon(Icons.photo),
-                                      title: new Text('50 Gram'),
+                                      title: new Text('250 Gram'),
                                       onTap: () {
                                         Navigator.pop(context);
                                       },
@@ -96,14 +128,14 @@ class SingleItem extends StatelessWidget {
                                     ),
                                     ListTile(
                                       //leading: new Icon(Icons.videocam),
-                                      title: new Text('1 Kg'),
+                                      title: new Text('750 Kg'),
                                       onTap: () {
                                         Navigator.pop(context);
                                       },
                                     ),
                                     ListTile(
                                       //leading: new Icon(Icons.share),
-                                      title: new Text('5 Kg'),
+                                      title: new Text('1 Kg'),
                                       onTap: () {
                                         Navigator.pop(context);
                                       },
@@ -124,7 +156,8 @@ class SingleItem extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  "50 Gram",
+                                  "250 Gram",
+                                 // widget.productUnit,
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontSize: 14,
@@ -142,7 +175,8 @@ class SingleItem extends StatelessWidget {
                         ),
                       ),
                           )
-                          : Text("50 Gram")
+                          //: Text("50 Gram")
+                          : Text('${widget.productPrice}\$/${widget.productUnit}'),
                     ],
                   ),
                 ),
@@ -150,15 +184,16 @@ class SingleItem extends StatelessWidget {
               Expanded(
                 child: Container(
                   height: 90,
-                  padding: isBool == false
+                  padding: widget.isBool == false
                       ? EdgeInsets.symmetric(horizontal: 15, vertical: 32)
                       : EdgeInsets.only(left: 15, right: 15),
-                  child: isBool == false
+                  child: widget.isBool == false
                       ? Count(
-                          productId: productId,
-                          productImage: productImage,
-                          productName: productName,
-                          productPrice: productPrice,
+                          productId: widget.productId,
+                          productImage: widget.productImage,
+                          productName: widget.productName,
+                          productPrice: widget.productPrice,
+                          productUnit: widget.productUnit,
                           //  productQuantity: "1",
                         )
                   // Container(
@@ -192,7 +227,7 @@ class SingleItem extends StatelessWidget {
                         child: Column(
                     children: [
                         InkWell(
-                          onTap: onDelete,
+                          onTap: widget.onDelete,
                           child: Icon(
                             Icons.delete,
                             size: 30,
@@ -202,51 +237,102 @@ class SingleItem extends StatelessWidget {
                         SizedBox(
                           height: 5,
                         ),
-                        wishLIst == false
+                        widget.wishLIst == false
                         ? Padding(
                           padding: const EdgeInsets.only(top: 8),
-                          child: Container(
-                            height: 25,
-                            width: 70,
-                            child: Count(
-                              productId: productId,
-                              productImage: productImage,
-                              productName: productName,
-                              productPrice: productPrice,
-                              //  productQuantity: "1",
-                            ),
-                          ),
                           // child: Container(
                           //   height: 25,
                           //   width: 70,
-                          //   decoration: BoxDecoration(
-                          //     border: Border.all(color: Colors.grey),
-                          //     borderRadius: BorderRadius.circular(30),
-                          //   ),
-                          //   child: Center(
-                          //     child: Row(
-                          //       mainAxisAlignment: MainAxisAlignment.center,
-                          //       children: [
-                          //         Icon(
-                          //           Icons.remove,
-                          //           color: primaryColor,
-                          //           size: 20,
-                          //         ),
-                          //         Text(
-                          //           "ADD",
-                          //           style: TextStyle(
-                          //             color: primaryColor,
-                          //           ),
-                          //         ),
-                          //         Icon(
-                          //           Icons.add,
-                          //           color: primaryColor,
-                          //           size: 20,
-                          //         ),
-                          //       ],
-                          //     ),
+                          //   child: Count(
+                          //     productId: widget.productId,
+                          //     productImage: widget.productImage,
+                          //     productName: widget.productName,
+                          //     productPrice: widget.productPrice,
+                          //     //  productQuantity: "1",
                           //   ),
                           // ),
+                          child: Container(
+                            height: 25,
+                            width: 70,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  InkWell(
+                                    onTap: (){
+                                      if(count==1) {
+                                        Fluttertoast.showToast(
+                                            msg: "You reach minimum limit",
+                                            toastLength: Toast.LENGTH_SHORT,
+                                           // gravity: ToastGravity.CENTER,
+                                            timeInSecForIosWeb: 2,
+                                            backgroundColor: primaryColor,
+                                            textColor: Colors.white,
+                                            fontSize: 16.0
+                                        );
+                                      }else{
+                                        setState(() {
+                                          count--;
+                                        });
+                                        reviewCartProvider.updateReviewCartData(
+                                            cartID: widget.productId,
+                                            cartName: widget.productName,
+                                            cartImage: widget.productImage,
+                                            cartPrice: widget.productPrice,
+                                            cartQuantity: count);
+                                      }
+                                    },
+                                    child: Icon(
+                                      Icons.remove,
+                                      color: primaryColor,
+                                      size: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "$count",
+                                    style: TextStyle(
+                                      color: primaryColor,
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: (){
+                                      if(count<10){
+                                        setState(() {
+                                          count++;
+                                        });
+                                        reviewCartProvider.updateReviewCartData(
+                                            cartID: widget.productId,
+                                            cartName: widget.productName,
+                                            cartImage: widget.productImage,
+                                            cartPrice: widget.productPrice,
+                                            cartQuantity: count);
+                                      }
+                                      // if(count==10){
+                                      //   Fluttertoast.showToast(
+                                      //       msg: "You reach Maximum limit",
+                                      //       toastLength: Toast.LENGTH_SHORT,
+                                      //       gravity: ToastGravity.CENTER,
+                                      //       timeInSecForIosWeb: 2,
+                                      //       backgroundColor: primaryColor,
+                                      //       textColor: Colors.white,
+                                      //       fontSize: 16.0
+                                      //   );
+                                      // }
+                                    },
+                                    child: Icon(
+                                      Icons.add,
+                                      color: primaryColor,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ):Container(),
                     ],
                   ),
@@ -256,7 +342,7 @@ class SingleItem extends StatelessWidget {
             ],
           ),
         ),
-        isBool == false
+        widget.isBool == false
             ? Container()
             : Divider(
           height: 1,

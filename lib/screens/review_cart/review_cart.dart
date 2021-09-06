@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodtest0/config/color.dart';
 import 'package:foodtest0/models/review_cart_model.dart';
 import 'package:foodtest0/provider/review_cart_provider.dart';
+import 'package:foodtest0/screens/check_out_delivery_details/delivery_details.dart';
 import 'package:foodtest0/widget/single_item.dart';
 import 'package:provider/provider.dart';
 
@@ -62,12 +63,35 @@ class ReviewCart extends StatelessWidget {
     reviewCartProvider.getReviewCartData();
 
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar:reviewCartProvider.getReviewCartDataList.isEmpty?Center(
-        child: Text("No Data"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset("assets/empty-cart.gif"),
+            Text(
+              "Your Cartlist is Empty",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+            ),
+            SizedBox(height: 8,),
+            Text(
+              "Create your first cartlist request",
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
+        // child: Text("No Data"),
       ):ListTile(
         title: Text("Total Amount"),
         subtitle: Text(
-            "\$ 170.00",
+            "\$${reviewCartProvider.getTotalPrice()}",
           style: TextStyle(
             color: Colors.green[900],
           ),
@@ -75,7 +99,9 @@ class ReviewCart extends StatelessWidget {
         trailing: Container(
           width: 160,
           child: MaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DeliveryDetails(),),);
+            },
             child: Text("Submit"),
             color: primaryColor,
             shape: RoundedRectangleBorder(
@@ -95,9 +121,7 @@ class ReviewCart extends StatelessWidget {
           ),
         ),
       ),
-      body:reviewCartProvider.getReviewCartDataList.isEmpty?Center(
-        child: Text("No Data"),
-      ):ListView.builder(
+      body:ListView.builder(
         itemCount: reviewCartProvider.getReviewCartDataList.length,
         itemBuilder: (context,index) {
           ReviewCartModel data = reviewCartProvider.getReviewCartDataList[index];
@@ -112,6 +136,7 @@ class ReviewCart extends StatelessWidget {
                 productPrice: data.cartPrice,
                 productId: data.cartID,
                 productQuantity: data.cartQuantity,
+                productUnit: data.cartUnit,
                 onDelete:(){
                   showAlertDialog(context,data);
                 },

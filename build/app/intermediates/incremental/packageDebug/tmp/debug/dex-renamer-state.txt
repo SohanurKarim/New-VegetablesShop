@@ -1,4 +1,4 @@
-#Mon Aug 30 09:06:33 BDT 2021
+#Mon Sep 06 18:09:30 BDT 2021
 base.2=C\:\\Users\\Sohan\\StudioProjects\\foodtest0\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
 path.2=classes3.dex
 base.1=C\:\\Users\\Sohan\\StudioProjects\\foodtest0\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex

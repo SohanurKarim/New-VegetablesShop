@@ -8,6 +8,7 @@ MERGED from C:\Users\Sohan\StudioProjects\foodtest0\android\app\src\main\Android
 MERGED from [:firebase_auth] C:\Users\Sohan\StudioProjects\foodtest0\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:cloud_firestore] C:\Users\Sohan\StudioProjects\foodtest0\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] C:\Users\Sohan\StudioProjects\foodtest0\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:fluttertoast] C:\Users\Sohan\StudioProjects\foodtest0\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:google_sign_in] C:\Users\Sohan\StudioProjects\foodtest0\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Sohan\.gradle\caches\transforms-2\files-2.1\709536c789cffb4d9880ee6df5442aec\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics:19.0.0] C:\Users\Sohan\.gradle\caches\transforms-2\files-2.1\47a22d42accc6fe24601a71e457e4f8a\jetified-firebase-analytics-19.0.0\AndroidManifest.xml:2:1-9:12
@@ -188,6 +189,8 @@ MERGED from [:cloud_firestore] C:\Users\Sohan\StudioProjects\foodtest0\build\clo
 MERGED from [:cloud_firestore] C:\Users\Sohan\StudioProjects\foodtest0\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\Users\Sohan\StudioProjects\foodtest0\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\Users\Sohan\StudioProjects\foodtest0\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] C:\Users\Sohan\StudioProjects\foodtest0\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] C:\Users\Sohan\StudioProjects\foodtest0\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_sign_in] C:\Users\Sohan\StudioProjects\foodtest0\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_sign_in] C:\Users\Sohan\StudioProjects\foodtest0\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Sohan\.gradle\caches\transforms-2\files-2.1\709536c789cffb4d9880ee6df5442aec\multidex-2.0.1\AndroidManifest.xml:20:5-43

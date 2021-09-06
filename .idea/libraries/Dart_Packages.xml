@@ -177,6 +177,13 @@
             </list>
           </value>
         </entry>
+        <entry key="fluttertoast">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.8/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="font_awesome_flutter">
           <value>
             <list>
@@ -391,6 +398,7 @@
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.9.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_signin_button-2.0.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.8/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-9.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-5.0.7/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_platform_interface-2.0.1/lib" />

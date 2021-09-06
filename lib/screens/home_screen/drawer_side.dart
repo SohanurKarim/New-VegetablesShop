@@ -54,8 +54,8 @@ class _DrwerSideState extends State<DrwerSide> {
                         child: CircleAvatar(
                           radius: 40,
                           backgroundImage: NetworkImage(
-                              userData.userImage ??
-                              'https://cdn.dribbble.com/users/1141243/screenshots/5837877/panda.png?compress=1&resize=400x300'
+                              userData.userImage
+                                 // ?? 'https://cdn.dribbble.com/users/1141243/screenshots/5837877/panda.png?compress=1&resize=400x300'
                           ),
                           backgroundColor: primaryColor,
                         ),

@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:foodtest0/config/color.dart';
+import 'package:foodtest0/models/product_models.dart';
 import 'package:foodtest0/provider/review_cart_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -12,12 +14,14 @@ class Count extends StatefulWidget {
  String productImage;
  String productId;
  int productPrice;
+ var productUnit;
 
  Count({
    required this.productName,
    required this.productImage,
    required this.productId,
-   required this.productPrice
+   required this.productPrice,
+   required this.productUnit
  });
 
   @override
@@ -93,6 +97,7 @@ class _CountState extends State<Count> {
                     cartImage: widget.productImage,
                     cartPrice: widget.productPrice,
                     cartQuantity: count,
+                   // cartUnit: widget.productUnit,
                   );
                 }
               },
@@ -111,16 +116,28 @@ class _CountState extends State<Count> {
             ),
             InkWell(
               onTap: (){
-                setState(() {
-                  count++;
-                });
-                reviewCartProvider.updateReviewCartData(
-                  cartID: widget.productId,
-                  cartName: widget.productName,
-                  cartImage: widget.productImage,
-                  cartPrice: widget.productPrice,
-                  cartQuantity: count,
-                );
+                if(count==10){
+                  Fluttertoast.showToast(
+                    msg: "You reach Maximum limit",
+                      toastLength: Toast.LENGTH_SHORT,
+                     // gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 3,
+                      backgroundColor: primaryColor,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
+                }else {
+                  setState(() {
+                    count++;
+                  });
+                  reviewCartProvider.updateReviewCartData(
+                    cartID: widget.productId,
+                    cartName: widget.productName,
+                    cartImage: widget.productImage,
+                    cartPrice: widget.productPrice,
+                    cartQuantity: count,
+                  );
+                }
               },
               child: Icon(
                 Icons.add,
@@ -141,6 +158,7 @@ class _CountState extends State<Count> {
                   cartImage: widget.productImage,
                   cartPrice: widget.productPrice,
                   cartQuantity: count,
+                  cartUnit: widget.productUnit,
                  // isAdd: true,
               );
             },            
